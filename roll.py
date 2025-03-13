@@ -6,17 +6,31 @@ from random import randrange
 # roll 3 - produce three numbers and print them.
 #
 
-a = int (input("How many die to you want to roll\n"))
+
 
 mylist = []
 def dice_roll(x):
     for i in range(x):
         mylist.append(randrange(6))
 
-dice_roll(a)
+keep_playing = True
 
-print("These are your rolls: ") 
-print(*mylist, sep=', ')
+while keep_playing:
+    a = int (input("How many die to you want to roll\n"))
+    dice_roll(a)
+
+    print("These are your rolls: ") 
+    print(*mylist, sep=', ')
+
+    t = input("\nDo you want to keep playing? Y/N\n").lower()
+    if t == "n":
+        keep_playing = False
+    elif t == "y":
+        keep_playing = True
+        mylist = []
+    else:
+        print("That wasn't an option womp womp game over")
+        keep_playing = False
 # for s in mylist:
     # print(s)
 #print(mylist)
